@@ -29,3 +29,8 @@ body {
   outline-offset: 4px;
   border-radius: 2px;
 }
+
+/* Reset de margens para embeds do Instagram */
+.instagram-embed-container iframe {
+  margin-bottom: 0 !important;
+}
