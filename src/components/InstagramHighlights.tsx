@@ -8,37 +8,46 @@ const REELS = [
     {
         id: "1",
         url: "https://www.instagram.com/reel/DUqdStoEeb3/",
-        embedCode: `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUqdStoEeb3/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; padding:0; width:100%;"></blockquote>`
+        embedCode: `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUqdStoEeb3/" data-instgrm-version="14" style="background:transparent; border:0; border-radius:1px; box-shadow:none; margin: 0; padding:0; width:100%;"></blockquote>`
     },
     {
         id: "2",
         url: "https://www.instagram.com/reel/DUbCrT3EaSy/",
-        embedCode: `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUbCrT3EaSy/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; padding:0; width:100%;"></blockquote>`
+        embedCode: `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUbCrT3EaSy/" data-instgrm-version="14" style="background:transparent; border:0; border-radius:1px; box-shadow:none; margin: 0; padding:0; width:100%;"></blockquote>`
     },
     {
         id: "3",
         url: "https://www.instagram.com/reel/DUYe8WLER5L/",
-        embedCode: `<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUYe8WLER5L/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0; padding:0; width:100%;"></blockquote>`
+        embedCode: `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUYe8WLER5L/" data-instgrm-version="14" style="background:transparent; border:0; border-radius:1px; box-shadow:none; margin: 0; padding:0; width:100%;"></blockquote>`
     },
 ];
 
 export default function InstagramHighlights() {
     useEffect(() => {
-        // Carrega o script do Instagram se ainda não existir
-        if (!document.getElementById("instagram-embed-script")) {
-            const script = document.createElement("script");
-            script.id = "instagram-embed-script";
-            script.src = "//www.instagram.com/embed.js";
-            script.async = true;
-            document.body.appendChild(script);
-        } else if ((window as any).instgrm) {
-            // Se o script já existe, força o processamento dos novos embeds
-            (window as any).instgrm.Embeds.process();
-        }
+        const loadInstagram = () => {
+            if (!(window as any).instgrm) {
+                const script = document.createElement("script");
+                script.id = "instagram-embed-script";
+                script.src = "//www.instagram.com/embed.js";
+                script.async = true;
+                document.body.appendChild(script);
+            } else {
+                (window as any).instgrm.Embeds.process();
+            }
+        };
+
+        loadInstagram();
+
+        // Pequeno atraso para garantir que o DOM renderizou antes do process
+        const timer = setTimeout(() => {
+            if ((window as any).instgrm) (window as any).instgrm.Embeds.process();
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
-        <section className="py-24 px-6 md:px-12 bg-gray-50">
+        <section className="py-20 px-6 md:px-12 bg-white">
             <div className="max-w-7xl mx-auto space-y-12">
                 <header className="text-center space-y-4">
                     <div className="flex items-center justify-center gap-2 text-primary">
@@ -53,18 +62,18 @@ export default function InstagramHighlights() {
                     </p>
                 </header>
 
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     {REELS.map((reel, index) => (
                         <motion.div
                             key={reel.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
+                            initial={{ opacity: 0, scale: 0.98 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 flex justify-center"
+                            className="bg-transparent rounded-2xl overflow-hidden flex justify-center"
                         >
                             <div
-                                className="w-full flex justify-center py-4"
+                                className="w-full max-w-[320px] mx-auto overflow-hidden instagram-embed-container"
                                 dangerouslySetInnerHTML={{ __html: reel.embedCode }}
                             />
                         </motion.div>
