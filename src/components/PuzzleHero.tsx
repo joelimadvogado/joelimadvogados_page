@@ -13,7 +13,8 @@ const DESKTOP_ITEMS = [
 ];
 
 const MOBILE_ITEMS = [
-  { id: 1, type: "logo", src: "/images/joelazul.jpeg", alt: "Logo Joel Lima", className: "col-span-2" },
+  { id: 1, type: "logo", src: "/images/logo_esquerda.jpeg", alt: "Logo Esquerda", className: "" },
+  { id: 2, type: "logo", src: "/images/logo_direita.jpeg", alt: "Logo Direita", className: "" },
 ];
 
 export default function PuzzleHero() {
