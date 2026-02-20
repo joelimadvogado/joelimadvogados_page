@@ -17,10 +17,7 @@ export default function Home() {
       {/* 1. Hero Section */}
       <PuzzleHero />
 
-      {/* 2. Navigation (Below Hero on Home) - Sticky */}
-      <div className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <Navbar />
-      </div>
+      <Navbar />
 
       {/* 3. Highlights - Reel/Instagram */}
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto flex-grow relative overflow-hidden">
@@ -89,10 +86,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative flex justify-center"
+            className="relative flex justify-center lg:justify-end scale-100 md:scale-95 origin-right"
           >
-            {/* Phone Frame Mockup */}
-            <div className="relative aspect-[9/16] w-full max-w-[340px] bg-neutral-900 rounded-[3rem] overflow-hidden shadow-[0_40px_80px_rgba(30,58,138,0.25)] border-[12px] border-white ring-1 ring-gray-200 group">
+            {/* Phone Frame Mockup - Slightly larger but still safe */}
+            <div className="relative aspect-[9/16] w-full max-w-[330px] bg-neutral-900 rounded-[3rem] overflow-hidden shadow-[0_40px_80px_rgba(30,58,138,0.25)] border-[12px] border-white ring-1 ring-gray-200 group">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black flex flex-col items-center justify-center text-brand-white p-6 text-center space-y-6">
                 <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
                   <Instagram size={40} className="text-primary" />

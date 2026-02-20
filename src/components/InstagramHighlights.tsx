@@ -26,7 +26,7 @@ export default function InstagramHighlights() {
                     </p>
                 </header>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
                     {REELS.map((reel, index) => (
                         <motion.div
                             key={reel.id}
