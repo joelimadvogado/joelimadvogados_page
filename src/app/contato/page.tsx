@@ -70,9 +70,8 @@ export default function Contato() {
                                 <div className="space-y-2">
                                     <h3 className="text-lg font-bold text-secondary">Sede Física</h3>
                                     <p className="text-sm text-gray-500 leading-relaxed font-medium">
-                                        {office.address.street}<br />
-                                        {office.address.complement}<br />
-                                        {office.address.city}, {office.address.state}
+                                        {office.address.street}, {office.address.complement}<br />
+                                        Centro, {office.address.city} - {office.address.state}
                                     </p>
                                 </div>
                             </div>
@@ -85,7 +84,7 @@ export default function Contato() {
                                     <h3 className="text-lg font-bold text-secondary">Plantão Jurídico</h3>
                                     <p className="text-sm text-gray-500 font-medium">
                                         Segunda a Sexta: {office.openingHours.weekdays}<br />
-                                        Sábados: {office.openingHours.weekends}
+                                        {office.openingHours.weekends}
                                     </p>
                                 </div>
                             </div>

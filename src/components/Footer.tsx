@@ -36,16 +36,19 @@ export default function Footer() {
                                 icon={<Phone size={18} className="text-primary" />}
                                 label="Telefone Principal"
                                 value={contacts.phone}
+                                href={`tel:${contacts.phone.replace(/\D/g, '')}`}
                             />
                             <ContactItem
                                 icon={<MessageCircle size={18} className="text-primary" />}
                                 label="WhatsApp Jurídico"
                                 value={contacts.phone}
+                                href={contacts.whatsappLink}
                             />
                             <ContactItem
                                 icon={<Mail size={18} className="text-primary" />}
                                 label="E-mail Institucional"
                                 value={contacts.email}
+                                href={`mailto:${contacts.email}`}
                             />
                         </div>
                     </div>
@@ -73,9 +76,14 @@ export default function Footer() {
     );
 }
 
-function ContactItem({ icon, label, value }: { icon: React.ReactNode, label: string, value: string }) {
+function ContactItem({ icon, label, value, href }: { icon: React.ReactNode, label: string, value: string, href: string }) {
     return (
-        <div className="flex gap-4 group cursor-pointer">
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex gap-4 group cursor-pointer"
+        >
             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-all border border-white/10">
                 {icon}
             </div>
@@ -83,13 +91,19 @@ function ContactItem({ icon, label, value }: { icon: React.ReactNode, label: str
                 <span className="block text-[10px] uppercase tracking-widest text-white/40 font-bold">{label}</span>
                 <span className="block text-sm text-white/80 group-hover:text-primary transition-colors">{value}</span>
             </div>
-        </div>
+        </a>
     );
 }
 
 function SocialIcon({ icon, href, label }: { icon: React.ReactNode, href: string, label: string }) {
     return (
-        <Link href={href} aria-label={label} className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300">
+        <Link
+            href={href}
+            aria-label={label}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-white hover:-translate-y-1 transition-all duration-300"
+        >
             {icon}
         </Link>
     );

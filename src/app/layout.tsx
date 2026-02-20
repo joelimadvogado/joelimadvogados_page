@@ -44,7 +44,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "Joel Lima Advocacia",
-  "image": "https://joellima.adv.br/images/meia_logo1.1.jpg",
+  "image": "https://joellima.adv.br/images/joelazul.jpeg",
   "description": "Escritório de advocacia especializado em Direito Civil e Previdenciário.",
   "address": {
     "@type": "PostalAddress",
@@ -60,7 +60,7 @@ const jsonLd = {
     "longitude": -46.633308
   },
   "url": "https://joellima.adv.br",
-  "telephone": "+5511999999999",
+  "telephone": "+5587999615807",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",

@@ -47,7 +47,7 @@ export default function InstagramHighlights() {
     }, []);
 
     return (
-        <section className="py-20 px-6 md:px-12 bg-white">
+        <section className="pb-24 px-6 md:px-12 bg-white">
             <div className="max-w-7xl mx-auto space-y-12">
                 <header className="text-center space-y-4">
                     <div className="flex items-center justify-center gap-2 text-primary">
@@ -70,7 +70,7 @@ export default function InstagramHighlights() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-transparent rounded-2xl overflow-hidden flex justify-center"
+                            className="bg-white rounded-[2.5rem] overflow-hidden flex justify-center shadow-[0_40px_80px_rgba(30,58,138,0.15)] ring-1 ring-gray-100"
                         >
                             <div
                                 className="w-full max-w-[320px] mx-auto overflow-hidden instagram-embed-container"

@@ -1,22 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const DESKTOP_ITEMS = [
-  { id: 1, type: "logo", src: "/images/meia_logo1.1.jpg", alt: "Logo Superior Esquerda" },
-  { id: 2, type: "logo", src: "/images/meia_logo2.1.jpg", alt: "Logo Superior Direita" },
-  { id: 3, type: "office", src: "/images/escritorio1.jpg", alt: "Escritório Vista 1" },
-  { id: 4, type: "office", src: "/images/escritorio2.jpg", alt: "Escritório Vista 2" },
-  { id: 5, type: "logo", src: "/images/meia_logo1.2.jpg", alt: "Logo Inferior Esquerda" },
-  { id: 6, type: "logo", src: "/images/meia_logo2.2.jpg", alt: "Logo Inferior Direita" },
-  { id: 7, type: "office", src: "/images/escritorio3.jpg", alt: "Escritório Vista 3" },
-  { id: 8, type: "office", src: "/images/escritorio4.jpg", alt: "Escritório Vista 4" },
+  { id: 1, type: "logo", src: "/images/joelazul.jpeg", alt: "Logo Joel Lima", className: "col-span-2 row-span-2" },
+  { id: 3, type: "office", src: "/images/escritorio1.jpg", alt: "Escritório Vista 1", className: "" },
+  { id: 4, type: "office", src: "/images/escritorio2.jpg", alt: "Escritório Vista 2", className: "" },
+  { id: 7, type: "office", src: "/images/escritorio3.jpg", alt: "Escritório Vista 3", className: "" },
+  { id: 8, type: "office", src: "/images/escritorio4.jpg", alt: "Escritório Vista 4", className: "" },
 ];
 
 const MOBILE_ITEMS = [
-  { id: 1, type: "logo", src: "/images/meia_logo1.jpg", alt: "Logo Esquerda" },
-  { id: 2, type: "logo", src: "/images/meia_logo2.jpg", alt: "Logo Direita" },
+  { id: 1, type: "logo", src: "/images/joelazul.jpeg", alt: "Logo Joel Lima", className: "col-span-2" },
 ];
 
 export default function PuzzleHero() {
@@ -29,8 +26,8 @@ export default function PuzzleHero() {
         <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full bg-secondary/20 blur-[120px]" />
       </div>
 
-      {/* Desktop Grid (8 items) - Premium Refinement */}
-      <div className="hidden md:grid grid-cols-4 gap-[0.05rem] max-w-7xl w-full aspect-[2/1] relative z-10">
+      {/* Desktop Grid - Premium Refinement */}
+      <div className="hidden md:grid grid-cols-4 grid-rows-2 gap-[0.05rem] max-w-7xl w-full aspect-[2/1] relative z-10">
         {DESKTOP_ITEMS.map((item, index) => (
           <motion.div
             key={item.id}
@@ -49,7 +46,7 @@ export default function PuzzleHero() {
               y: -5,
               transition: { duration: 0.3 }
             }}
-            className="group relative flex items-center justify-center"
+            className={cn("group relative flex items-center justify-center", item.className)}
           >
             {/* Glass Card Container - Clean Style with precision sizing */}
             <div className="relative w-[98%] h-[99%] rounded-[1rem] bg-white border border-white/60 shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_50px_rgba(4,120,87,0.15)] transition-all duration-500 overflow-hidden">
@@ -58,8 +55,11 @@ export default function PuzzleHero() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110 ease-out"
-                  sizes="25vw"
+                  className={cn(
+                    "object-cover transition-transform duration-1000 ease-out",
+                    item.type === "office" ? "group-hover:scale-110" : "group-hover:scale-[1.9]"
+                  )}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />
                 {/* Premium Shine Effect on Hover */}
@@ -70,7 +70,7 @@ export default function PuzzleHero() {
         ))}
       </div>
 
-      {/* Mobile Grid (2 items) - Premium Refinement */}
+      {/* Mobile Grid - Premium Refinement */}
       <div className="grid md:hidden grid-cols-2 gap-[0.25rem] w-full aspect-square relative z-10">
         {MOBILE_ITEMS.map((item, index) => (
           <motion.div
@@ -78,7 +78,7 @@ export default function PuzzleHero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
-            className="flex items-center justify-center"
+            className={cn("flex items-center justify-center", item.className)}
           >
             <div className="relative w-[98%] h-[99%] rounded-[1rem] bg-white border border-white/50 shadow-lg overflow-hidden">
               <Image
@@ -86,7 +86,7 @@ export default function PuzzleHero() {
                 alt={item.alt}
                 fill
                 className="object-cover"
-                sizes="50vw"
+                sizes="100vw"
                 priority
               />
             </div>
