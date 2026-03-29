@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const DESKTOP_ITEMS = [
-  { id: 1, type: "logo", src: "/images/joelazul.jpeg", alt: "Logo Joel Lima", className: "col-span-2 row-span-2" },
+  { id: 1, type: "logo", src: "/images/joelazul.svg", alt: "Logo Joel Lima", className: "col-span-2 row-span-2" },
   { id: 3, type: "office", src: "/images/escritorio1.jpg", alt: "Escritório Vista 1", className: "" },
   { id: 4, type: "office", src: "/images/escritorio2.jpg", alt: "Escritório Vista 2", className: "" },
   { id: 7, type: "office", src: "/images/escritorio3.jpg", alt: "Escritório Vista 3", className: "" },

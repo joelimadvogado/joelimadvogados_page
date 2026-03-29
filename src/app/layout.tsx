@@ -37,14 +37,17 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
+  icons: {
+    icon: "/images/blackJoel-fotor-2.ico",
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LegalService",
   "name": "Joel Lima Advocacia",
-  "image": "https://joellima.adv.br/images/joelazul.jpeg",
+  "image": "https://joellima.adv.br/images/joelazul.svg",
   "description": "Escritório de advocacia especializado em Direito Civil e Previdenciário.",
   "address": {
     "@type": "PostalAddress",
